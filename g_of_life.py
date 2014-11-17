@@ -49,6 +49,10 @@ def tick(cells):
 	cells.update(changes)
 	cells.update(expansions)
 
+
+
+	
+
 def print_grid( size, cells):
 	grid = []
 	for y in range(size):
@@ -57,7 +61,7 @@ def print_grid( size, cells):
 			grid[y].append(0)
 	for point in cells.keys():
 		if  0 <= point[0] < size and 0 <= point[1] < size:
-			grid[point[0]][point[1]] = cells[point]  
+			grid[point[1]][point[0]] = cells[point]  
 	return grid
 
 
@@ -70,15 +74,16 @@ def print_grid( size, cells):
 test_array_dict = {}
 
 
-for x in range(3):
-	for y in range(3):
+for x in range(6):
+	for y in range(6):
 		test_array_dict[(x,y)] = 0
 
-test_array_dict[(0,1)] = 1
 test_array_dict[(1,2)] = 1
 test_array_dict[(2,2)] = 1
 test_array_dict[(3,2)] = 1
-
+test_array_dict[(2,3)] = 1
+test_array_dict[(3,3)] = 1
+test_array_dict[(4,3)] = 1
 
 
 for x in range(20):
@@ -86,7 +91,7 @@ for x in range(20):
 	print '>>>>>>>>>>>>>>>>>>>>', x + 1
 
 
-	for item in print_grid(5,test_array_dict)[::-1]:
+	for item in print_grid(6,test_array_dict)[::-1]:
 		print item
 	tick(test_array_dict)
 	
